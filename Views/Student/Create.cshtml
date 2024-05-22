@@ -1,0 +1,35 @@
+﻿@model Student
+@{
+    Layout = "_layout";
+   
+    SelectList deptlst = new SelectList(ViewBag.deptlist, "DeptId", "DeptName");
+}
+
+    <form method="post" >
+        <label asp-for="Name"></label><input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span><br />
+        <label asp-for="Age"></label><input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+        <br />
+        <label asp-for="Email"></label><input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <br />
+        <label asp-for="ConfirmEmail"></label><input asp-for="ConfirmEmail" class="form-control" />
+        <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
+        <br />
+        <label asp-for="DeptNo"></label>
+        <select asp-for="DeptNo" asp-items="deptlst" class="form-control">
+            <option>Select Department</option>
+       @*  @foreach(var item in deptlist)
+            {
+                <option value="@item.DeptId">@item.DeptName</option>
+            } *@
+        </select>
+        <br />
+        <input type="submit" value="add student" class="btn btn-primary" />
+    </form>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    

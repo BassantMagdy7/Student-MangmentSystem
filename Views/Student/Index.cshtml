@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Student>
+@{
+    Layout = "_layout";
+}
+
+
+    <a asp-action="create" asp-controller="student" class="btn btn-primary">Create</a>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Operation</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-danger">
+                    <td colspan="5">No Student Exists</td>
+                </tr>
+            }
+            else
+            {
+                foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@item.Email</td>
+                        <td>@item.Department.DeptName</td>
+                        <td>
+                            <a asp-action="details" asp-controller="student" asp-route-id="@item.Id" class="btn btn-primary">detalis</a>
+                            <a asp-action="edit" asp-controller="student" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                            <button onclick="fun1(@item.Id)" class="btn btn-primary">Details</button>
+                        </td>
+                    </tr>
+                    
+                }
+            }
+        </tbody>
+    </table>
+    <div id="div1">
+          
+    </div>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script>
+        function fun1(i){
+            $("#div1").load("/student/details2/"+i)
+        }
+    </script>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Department>
+@{
+    Layout = "_layout2";
+    ViewBag.Title = "dept index";
+}
+
+    <a href="/department/create" class="btn btn-danger">Create</a>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                <td>@item.DeptId</td>
+                <td>@item.DeptName</td>
+                <td>
+                    <a asp-action="details" asp-controller="department" asp-route-id ="@item.DeptId" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-controller="department" asp-route-id="@item.DeptId" class="btn btn-info">Update</a>
+                   
+                    <a asp-action="Delete" asp-controller="department" onclick="return confirm ('Are You Sure')" asp-route-id="@item.DeptId" class="btn btn-danger">Delete</a>
+                    <a asp-action="showcourses" asp-controller="departmentcourse" class="btn btn-info" asp-route-id="@item.DeptId">ShowCourses</a>
+                        <a asp-action="MangeCourse" asp-controller="departmentcourse" class="btn btn-info" asp-route-id="@item.DeptId">MangeCourses</a>
+                </td>
+                </tr>
+              
+            }
+        </tbody>
+    </table>
+

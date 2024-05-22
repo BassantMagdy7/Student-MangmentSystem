@@ -1,0 +1,12 @@
+﻿@model Department
+@{
+    Layout = "_layout2";
+    ViewBag.Title = "dept create";
+}
+
+        <form method="post" class="form-control">
+        <label asp-for="DeptId">DepartmentId</label><input asp-for="DeptId" /><br />
+        <label asp-for="DeptName">DepartmentName</label><input asp-for="DeptName" /><br />
+        <input type="submit" value="add department" class="btn btn-danger" />
+        </form>
+
